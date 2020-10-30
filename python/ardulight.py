@@ -1,4 +1,6 @@
-import serial, time
+import serial, time, sys
+f = open('console.log', 'a')
+sys.stdout = f
 
 def hex_to_rgb(value):
     value = value.lstrip('#')
@@ -8,13 +10,8 @@ def hex_to_rgb(value):
 class ardu:
     def __init__(self, port):
         self.port = port
-        self.ser = serial.Serial(
-        port=port,
-        baudrate=9600,
-        parity=serial.PARITY_NONE,
-        stopbits=serial.STOPBITS_ONE,
-        bytesize=serial.EIGHTBITS,
-        timeout=0)
+
+        self.ser = serial.Serial(port=port,baudrate=9600)
     
     def on(self):
         self.ser.write(b'0')
@@ -71,5 +68,9 @@ class ardu:
         print(f"[{self.port}] 8 {str(delay)}{color_list}")
 
     def raw(self, command:str):
-        self.ser.write(f"{command}".encode("ascii"))
+        self.ser.write(bytes(f"{command}", encoding="ascii"))
         print(f"[{self.port}] {command}")
+
+if __name__ == "__main__":
+    a = ardu("COM9")
+    a.raw("1 0 0 0 0")

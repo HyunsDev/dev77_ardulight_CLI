@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ardulight 아두라이트 콘솔</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery.js"></script>
+</head>
+<body>
+  <div class="divver">
+    <div class="header">
+      <h1>ArduLight Console</h1>
+    </div>
+
+    <div class="console">
+      <input type="text" id="port" class="input_text" style="width: 150px; margin-right: 15px;" placeholder="Port">
+      <input type="text" id="command" class="input_text" style="flex: 1; " placeholder="Command">
+      <input type="button" id="send" class="input_button" value="Send" style="margin-left: 15px;" onclick="command_send()">
+    </div>
+
+    <div class="commands">
+
+      
+      <div class="command">
+        <div class="name">on()</div>
+        <div class="dic">LED의 기본 상태</div>
+        <div class="example">on()</div>
+        <div class="fill" onclick="fill('on')">example</div>
+      </div>
+
+      <div class="command">
+        <div class="name">off()</div>
+        <div class="dic">LED 꺼짐</div>
+        <div class="example">off()</div>
+        <div class="fill" onclick="fill('off')">example</div>
+      </div>
+
+      <div class="command">
+        <div class="name">soild(color:list)</div>
+        <div class="dic">단색</div>
+        <div class="example">soild([255,255,255])</div>
+        <div class="fill" onclick="fill('soild')">example</div>
+      </div>
+
+      <div class="command">
+        <div class="name">each(colors:list)</div>
+        <div class="dic">개별 LED 조절</div>
+        <div class="example">each([[255, 0, 0], [255, 98, 0], ...(x14)])</div>
+        <div class="fill" onclick="fill('each')">example</div>
+      </div>
+
+      <div class="command">
+        <div class="name">spac(delay:int)</div>
+        <div class="dic">무지개 스펙트럼</div>
+        <div class="example">spac(30)</div>
+        <div class="fill" onclick="fill('spac')">example</div>
+      </div>
+
+      <div class="command">
+        <div class="name">wave(delay:int, colors:list)</div>
+        <div class="dic">색 웨이브</div>
+        <div class="example">wave(30, [[255, 0, 0], [255, 98, 0], ...(x14)])</div>
+        <div class="fill" onclick="fill('wave')">example</div>
+      </div>
+
+      <div class="command">
+        <div class="name">down(delay:int, color:list)</div>
+        <div class="dic">Down 효과</div>
+        <div class="example">down(30, [255,255,0])</div>
+        <div class="fill" onclick="fill('down')">example</div>
+      </div>
+
+      <div class="command">
+        <div class="name">wipe(delay:int, colors:list)</div>
+        <div class="dic">LED 와이프</div>
+        <div class="example">wipe(30, [[255, 0, 0], [255, 98, 0], ...(x14)])</div>
+        <div class="fill" onclick="fill('wipe')">example</div>
+      </div>
+
+      <div class="command">
+        <div class="name">raw(command:str)</div>
+        <div class="dic">메모리 직접 입력</div>
+        <div class="example">raw()</div>
+        <div class="fill" onclick="fill('raw')">example</div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>웹사이트 및 모듈 제작 : 혀느현스</p>
+      <a href="https://www.notion.so/hnhs/CLI-be3cd6c45daa431bad3b7f4bcead0b16">자세한 설명</a>
+    </div>
+    
+  </div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>

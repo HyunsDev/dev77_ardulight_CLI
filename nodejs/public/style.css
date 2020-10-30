@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #F0F1F3;
+  font-family: 'Roboto', sans-serif;
+}
+
+.divver {
+  max-width: 1310px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.header {
+  margin-top: 90px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+.console {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.console .input_text {
+  border: none;
+  padding: 10px;
+  background-color: transparent;
+  border-bottom: solid 1px #8A9DC4;
+  font-size: 20px;
+  color: #000000;
+  height: 40px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.console .input_text::-webkit-input-placeholder {
+  font-size: 20px;
+  color: #8A9DC4;
+}
+
+.console .input_text:-ms-input-placeholder {
+  font-size: 20px;
+  color: #8A9DC4;
+}
+
+.console .input_text::-ms-input-placeholder {
+  font-size: 20px;
+  color: #8A9DC4;
+}
+
+.console .input_text::placeholder {
+  font-size: 20px;
+  color: #8A9DC4;
+}
+
+.console .input_text:focus {
+  outline: none;
+}
+
+.console .input_button {
+  height: 40px;
+  width: 140px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+  background-color: #42A8F7;
+  border-radius: 4px;
+  color: #EBF1FC;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+
+.console .warn {
+  background-color: #f74242;
+}
+
+.console .ok {
+  background-color: #56dd94;
+}
+
+.console .input_button:focus {
+  outline: none;
+}
+
+.commands {
+  margin-top: 50px;
+}
+
+.commands .command {
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.commands .command .name {
+  width: 300px;
+  font-size: 20px;
+}
+
+.commands .command .dic {
+  width: 300px;
+}
+
+.commands .command .example {
+  width: 520px;
+  color: slategrey;
+}
+
+.commands .command .fill {
+  width: 160px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #42A8F7;
+  font-size: 17px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #EBF1FC;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.footer {
+  color: #c5c5c5;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #77b5e4;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,9 +1,10 @@
-
 #include <EEPROM.h>
 #include <Adafruit_NeoPixel.h>
 #define PIN 7
+
 #define NUM_LEDS 14
 
+int led_l =  12;
 int RamPos = 0;
 int ledMode = EEPROM.read(0);
 int ii_0 = 0;
@@ -14,6 +15,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, PIN, NEO_GRB + NEO_KHZ800)
 
 void setup() {
   // put your setup code here, to run once:
+  pinMode(led_l, OUTPUT);
   Serial.begin(9600);
   strip.begin(); //네오픽셀을 초기화하기 위해 모든LED를 off시킨다
   strip.show();
@@ -22,6 +24,12 @@ void setup() {
 void loop() {
   int ledMode = EEPROM.read(0);
   Serial.println(ledMode);
+
+  if (ledMode == 1) {
+    digitalWrite(led_l, LOW);
+  } else {
+    digitalWrite(led_l, HIGH);
+  }
 
   if (ledMode == 0) { //Mode on
     for (int i = 0; i < NUM_LEDS; i++) {
@@ -50,33 +58,33 @@ void loop() {
     if (needUpdate) {
       needUpdate = true;
       for (int i = 0; i < NUM_LEDS; i++) {
-      strip.setPixelColor(i, 0, 0, 0);
+        strip.setPixelColor(i, 0, 0, 0);
       }
       strip.show();
     }
   }
 
   else if (ledMode == 2) { //솔리드 ========
-    if(needUpdate) {
+    if (needUpdate) {
       needUpdate = true;
       for (int i = 0; i < NUM_LEDS; i++) {
-      strip.setPixelColor(i, EEPROM.read(2), EEPROM.read(3), EEPROM.read(4));
+        strip.setPixelColor(i, EEPROM.read(2), EEPROM.read(3), EEPROM.read(4));
       }
       strip.show();
-      
+
     }
-    
+
   }
 
   else if (ledMode == 3) { //개별 적용 =======
     if (needUpdate) {
       needUpdate = true;
       int ii = 2;
-    for (int i = 0; i < NUM_LEDS; i++) {
-      strip.setPixelColor(i, EEPROM.read(ii), EEPROM.read(ii + 1), EEPROM.read(ii + 2));
-      ii = ii + 3;
-    }
-    strip.show();
+      for (int i = 0; i < NUM_LEDS; i++) {
+        strip.setPixelColor(i, EEPROM.read(ii), EEPROM.read(ii + 1), EEPROM.read(ii + 2));
+        ii = ii + 3;
+      }
+      strip.show();
     }
   }
 
@@ -91,7 +99,7 @@ void loop() {
     //     strip.setPixelColor(i, EEPROM.read(2), EEPROM.read(3), EEPROM.read(4));
     //   }
     // }
-    
+
 
     // int x = 1;
 
@@ -122,7 +130,7 @@ void loop() {
 
   else if (ledMode == 8) { //컬러 와이프
     for (int i = 0; i < NUM_LEDS; i++) {
-      strip.setPixelColor(i, EEPROM.read(ii_8), EEPROM.read(ii_8+1), EEPROM.read(ii_8+2));
+      strip.setPixelColor(i, EEPROM.read(ii_8), EEPROM.read(ii_8 + 1), EEPROM.read(ii_8 + 2));
       strip.show();
       delay(EEPROM.read(1));
     }
@@ -192,28 +200,28 @@ uint32_t Wheel(byte WheelPos) { //컬러 휠
 //           strip.setPixelColor(i+q, Wheel( (i+j) % 255));
 //         }
 //         strip.show();
-       
+
 //         delay(wait);
-       
+
 //         for (int i=0; i < strip.numPixels(); i=i+3) {
-//           strip.setPixelColor(i+q, 0); 
+//           strip.setPixelColor(i+q, 0);
 //         }
 //     }
 //   }
 // }
 
 void theaterChase(uint32_t c, uint8_t wait) { //입력한 색으로 LED를 깜빡거리며 표현한다
-  for (int j=0; j<10; j++) {  //do 10 cycles of chasing
-    for (int q=0; q < 3; q++) {
-      for (int i=0; i < strip.numPixels(); i=i+3) {
-        strip.setPixelColor(i+q, c);    //turn every third pixel on
+  for (int j = 0; j < 10; j++) { //do 10 cycles of chasing
+    for (int q = 0; q < 3; q++) {
+      for (int i = 0; i < strip.numPixels(); i = i + 3) {
+        strip.setPixelColor(i + q, c);  //turn every third pixel on
       }
       strip.show();
-     
+
       delay(wait);
-     
-      for (int i=0; i < strip.numPixels(); i=i+3) {
-        strip.setPixelColor(i+q, 0);        //turn every third pixel off
+
+      for (int i = 0; i < strip.numPixels(); i = i + 3) {
+        strip.setPixelColor(i + q, 0);      //turn every third pixel off
       }
     }
   }
@@ -222,8 +230,8 @@ void theaterChase(uint32_t c, uint8_t wait) { //입력한 색으로 LED를 깜�
 void rainbowCycle(uint8_t wait) { //NeoPixel에 달린 LED를 각각 다른색으로 시작하여 다양한색으로 반복한다
   uint16_t i, j;
 
-  for(j=0; j<256; j++) { 
-    for(i=0; i< strip.numPixels(); i++) {
+  for (j = 0; j < 256; j++) {
+    for (i = 0; i < strip.numPixels(); i++) {
       strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
     }
     strip.show();
