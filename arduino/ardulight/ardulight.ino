@@ -2,7 +2,7 @@
 #include <Adafruit_NeoPixel.h>
 #define PIN 7
 
-#define NUM_LEDS 14
+#define NUM_LEDS 20
 
 int led_l =  12;
 int RamPos = 0;
@@ -23,15 +23,24 @@ void setup() {
 
 void loop() {
   int ledMode = EEPROM.read(0);
-  Serial.println(ledMode);
 
-  if (ledMode == 1) {
+  Serial.print(ledMode);
+  Serial.print(" ");
+  Serial.print(EEPROM.read(1));
+  Serial.print(" ");
+  Serial.print(EEPROM.read(2));
+  Serial.print(" ");
+  Serial.print(EEPROM.read(3));
+  Serial.print(" ");
+  Serial.println(EEPROM.read(4));
+
+  if (ledMode == 8) {
     digitalWrite(led_l, LOW);
   } else {
     digitalWrite(led_l, HIGH);
   }
 
-  if (ledMode == 0) { //Mode on
+  if (ledMode == 9) { //Mode on
     for (int i = 0; i < NUM_LEDS; i++) {
       if (ii_0 == 0) {
         strip.setPixelColor(i, 255, 0, 0);
@@ -158,22 +167,25 @@ void commandread() { //시리얼 버퍼
     needUpdate = true;
     while (Serial.available()) {
       int c = Serial.parseInt();
-      Serial.print("[RAM ");
-      Serial.print(RamPos);
-      Serial.print("] ");
-      Serial.println(c);
-      EEPROM.write(RamPos, c);
+
+      if ( c == 0 && RamPos == 0) {
+        ;
+      } else {
+        Serial.print("[RAM ");
+        Serial.print(RamPos);
+        Serial.print("] ");
+        Serial.println(c);
+        EEPROM.write(RamPos, c);
+      }
       RamPos += 1;
     }
-  } else {
-    RamPos = 0;
   }
 }
 
 void rainbow(uint8_t wait) { //레인보우 스펙트럼
   uint16_t i, j;
   for (j = 0; j < 256; j++) {
-    for (i = 0; i < strip.numPixels(); i++) {
+    for (i = 0; i < NUM_LEDS; i++) {
       strip.setPixelColor(i, Wheel((i + j) & 255));
     }
     strip.show();

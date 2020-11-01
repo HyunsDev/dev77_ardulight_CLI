@@ -13,11 +13,30 @@
 
 # print(a)
 
-import serial, time, sys
-ser = serial.Serial(port="COM9",baudrate=9600)
+# import serial, time, sys
+# ser = serial.Serial(port="COM9",baudrate=9600)
+
+# while True:
+#     print(ser.writable())
+#     if ser.writable():
+#         ser.write("1".encode("ascii"))
+#         break
+
+import colorsys
+
+def hsv2rgb(h,s,v):
+    return tuple(round(i * 255) for i in colorsys.hsv_to_rgb(h,s,v))
+
+i = 0
+ii = 0
+
+op = []
 
 while True:
-    print(ser.writable())
-    if ser.writable():
-        ser.write("1".encode("ascii"))
+    if i == 18: 
         break
+    print()
+    op.append(list(hsv2rgb(i*18/360, 1, 1)))
+    i = i + 1
+print(op)
+

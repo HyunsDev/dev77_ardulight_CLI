@@ -17,12 +17,17 @@ router.get('/a/:port', function(req, res, next) {
     args: [req.params.port, req.query.d]
   };
 
-  PythonShell.run("H:/projects/77_ardulight/dev77_ardulight_CLI/python/ardulight_arg.py", options, function(err, data) {
+  PythonShell.run("..\\python\\ardulight_arg.py", options, function(err, data) {
     if (err) {
       console.log(err)
       res.send({result: "error"});
     } else {
-      res.send({result: "ok"});
+      if(data[0].indexOf(`[${req.params.port}]`) != -1) {
+        res.send({result: "ok"});
+      } else {
+        res.send({result: "error"});
+      }
+      
     }
 
   });
