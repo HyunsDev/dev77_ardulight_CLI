@@ -1,0 +1,31 @@
+{
+  "name": "ardulight",
+  "version": "1.0.0",
+  "description": "Ardulight Web pannel",
+  "repository": "hyunsdev/ardulight_web_pennel",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron app.js",
+    "build:osx": "electron-builder --mac",
+    "build:linux": "npm run build:linux32 && npm run build:linux64",
+    "build:linux32": "electron-builder --linux --ia32",
+    "build:linux64": "electron-builder --linux --x64",
+    "build:win": "npm run build:win32 && npm run build:win64",
+    "build:win32": "electron-builder --win portable --ia32",
+    "build:win64": "electron-builder --win portable --x64"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^3.0.2",
+    "electron-builder": "^22.9.1",
+    "papaparse": "^4.6.0",
+    "python-shell": "^2.0.2"
+  },
+  "build": {
+    "win": {
+      "asar": false,
+      "target": "nsis",
+      "icon": "assets/icon/win/logo_alhpa 64x64.ico"
+    }
+  }
+}

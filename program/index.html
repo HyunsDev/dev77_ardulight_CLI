@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ardulight 아두라이트 콘솔</title>
-  <link rel="stylesheet" href="style.css">
+  <title>아두라이트 Console</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./assets/logo 64x64.png" type="image/x-icon">
+
+  <script>
+    delete module.exports
+  </script>
   <script src="jquery.js"></script>
+  <script src="windows.js"></script>
 </head>
 <body>
+
   <div class="divver">
     <div class="header">
       <h1>ArduLight Console</h1>
@@ -46,7 +53,7 @@
       <div class="command">
         <div class="name">each(colors:list)</div>
         <div class="dic">개별 LED 조절</div>
-        <div class="example">each([[255, 0, 0], [255, 98, 0], ...(x14)])</div>
+        <div class="example">each([[255, 0, 0], [255, 98, 0], ...(x20)])</div>
         <div class="fill" onclick="fill('each')">example</div>
       </div>
 
@@ -60,7 +67,7 @@
       <div class="command">
         <div class="name">wave(delay:int, colors:list)</div>
         <div class="dic">색 웨이브</div>
-        <div class="example">wave(30, [[255, 0, 0], [255, 98, 0], ...(x14)])</div>
+        <div class="example">wave(30, [[255, 0, 0], [255, 98, 0], ...(x20)])</div>
         <div class="fill" onclick="fill('wave')">example</div>
       </div>
 
@@ -74,7 +81,7 @@
       <div class="command">
         <div class="name">wipe(delay:int, colors:list)</div>
         <div class="dic">LED 와이프</div>
-        <div class="example">wipe(30, [[255, 0, 0], [255, 98, 0], ...(x14)])</div>
+        <div class="example">wipe(30, [[255, 0, 0], [255, 98, 0], ...(x20)])</div>
         <div class="fill" onclick="fill('wipe')">example</div>
       </div>
 
@@ -93,6 +100,5 @@
 
 
 
-  <script src="script.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@ body {
 }
 
 .header {
-  margin-top: 90px;
+  margin-top: 50px;
   margin-bottom: 30px;
 }
 
@@ -114,7 +114,7 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 60px;
+  height: 50px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-left: 20px;
@@ -138,12 +138,12 @@ h1 {
 }
 
 .commands .command .fill {
-  width: 160px;
+  width: 120px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: #42A8F7;
   font-size: 17px;
-  height: 40px;
+  height: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -169,5 +169,55 @@ h1 {
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes loading_2 {
+  0% {
+    display: block;
+  }
+  100% {
+    display: none;
+  }
+}
+
+@keyframes loading_2 {
+  0% {
+    display: block;
+  }
+  100% {
+    display: none;
+  }
+}
+
+.loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: loading 3s linear 0s 1 forwards;
+          animation: loading 3s linear 0s 1 forwards;
 }
 /*# sourceMappingURL=style.css.map */
